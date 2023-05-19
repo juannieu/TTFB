@@ -1,0 +1,194 @@
+\chapter{Introducción específica} % Main chapter title
+
+\label{Chapter2}
+
+%----------------------------------------------------------------------------------------
+%	SECTION 1
+%----------------------------------------------------------------------------------------
+En este capítulo, se presentan los conceptos necesarios para poner en funcionamiento el trabajo de detección. Se inicia con la descripción de los objetos a detectar, seguido de los modelos de visión por computadora disponibles. De igual manera, se abordan los protocolos de transmisión y recepción del vídeo y se finaliza con los requerimientos computacionales necesarios para llevar a cabo la detección.
+
+\section{Definición de intruso}
+Para cumplir con el objetivo específico del trabajo, es importante tener en cuenta la definición de intruso dada por el cliente, que incluye la detección de personas y animales de gran porte, lo que implica que la respuesta del módulo deberá activarse con cualquier animal de mayor tamaño al de un perro o un gato. Es importante tener en mente que el \textit{dataset} COCO permite el reconocimiento de una serie de animales de gran porte que no hacen parte de la fauna argentina, por lo que se decidió en conjunto con el cliente que algunas etiquetas se filtrarían a fin de evitar que el modelo intente reconocer estas clases. Algunos ejemplos de etiquetas filtradas incluyen:
+
+\begin{itemize}
+	\item Elefantes
+	\item Jirafas
+	\item Cebras
+\end{itemize}
+
+Por otro lado, y a fin de mejorar el reconocimiento de intrusos, se decidió incorporar algunas clases que corresponden a objetos que suelen cargar las personas y vehículos. De esta manera se hace posible una suerte de reconocimiento indirecto, dándole al modelo una “segunda oportunidad” en casos en los que por algún motivo generó un falso negativo en el reconocimiento de una persona. Es importante tener en cuenta que estos objetos propuestos ya hacían parte del \textit{dataset} COCO, por lo que no se requirió reentrenar el modelo para lograr su detección. Dentro de estos objetos relacionados encontramos: 
+
+\begin{itemize}
+	\item Vehículos
+	\item Objetos de porte personal, como maletines o sombrillas
+\end{itemize}
+
+Es importante tener en cuenta que el módulo marcará toda detección como una intrusión. Esto quiere decir que las detecciones en lotes vecinos no se filtrarán dado que se considera que la totalidad del \textit{frame} es área vigilada. Dicho esto, las clases que generarán un reporte positivo para intruso al ser detectadas son:
+
+\begin{table}[]
+\centering
+\caption{Clases detectadas como intruso por el módulo.}
+\label{definicion-intruso}
+\begin{tabular}{cc}
+\hline
+\multicolumn{2}{c}{\textbf{Clases detectadas como intruso}} \\ \hline
+Persona                   & Vaca                   \\
+Camión                    & Bus                    \\
+Automóvil                 & Sombrilla              \\
+Motocicleta               & Mochila                \\
+Bicicleta                 & Maletín                \\
+Perro                     & Maleta                 \\
+Caballo                   & Gato                   \\ \hline
+\end{tabular}
+\end{table}
+
+\pagebreak
+
+Hay que recordar que la sola detección de una de estas clases generará un reporte positivo de intruso. El modelo no está en capacidad de identificar personas específicas en el vídeo, por lo que le resultará imposible diferenciar entre personal autorizado en un área (el mismo personal de seguridad, o la persona al mando del dron), y a intrusos en la zona. 
+
+
+\section{Modelo utilizado}
+
+El modelo utilizado para el desarrollo de la totalidad del trabajo es YOLOv3. La principal ventaja que tiene este modelo es que es capaz de ejecutarse con una velocidad considerablemente mayor a la de modelos anteriores como RetinaNet-50 y RetinaNet-101. 
+
+Este modelo se basa en el uso de redes neuronales convolucionales (CNN) que, al dividir la imagen en una cuadrícula, permiten calcular la probabilidad de ocurrencia de objetos en cada celda. Con esta información, el modelo determina tres parámetros clave para su funcionamiento:
+
+\begin{itemize}
+	\item \textit{Intersection over Union} (IoU) \cite{8}, se trata del criterio utilizado para eliminar cajas redundantes, y asegurar que solo se mantenga una por cada objeto detectado, incluso si hay varios objetos cercanos en la imagen. De esta manera, se evita la detección de objetos duplicados y se obtiene una detección más precisa y clara de los objetos presentes en la imagen.
+	
+	Se calcula a través de la ecuación \ref{eq:metric}:
+	
+\begin{equation}
+	\label{eq:metric}
+	IoU=\frac{A_{s}}{A_{u}}
+\end{equation}
+	
+	
+	
+	Donde $A_{s}$ representa el área de superposición entre ambas cajas y $A_{u}$ el área de unión.
+	
+	Para lograr esto, cada celda es responsable de calcular la probabilidad de que haya un objeto dentro de sus fronteras, se genera una serie de cajas propuestas alrededor del objeto, y a través del uso de redes neuronales convolucionales se calcula la probabilidad de ocurrencia.
+	
+	Finalmente, el modelo elimina las cajas que no cumplen con dos criterios importantes:	en primer lugar, se descartan aquellas cajas que tienen una probabilidad de ocurrencia menor que la máxima del objeto de la zona. Este algoritmo es conocido como \textit{Non-Maximum Suppression} \cite{14} y utiliza la probabilidad de ocurrencia, también conocida como \textit{objectness score} \cite{12}, para seleccionar solo las cajas más relevantes. En segundo lugar, se eliminan las cajas que tienen un \textit{Intersection Over Union (IoU)} mayor a un valor determinado, que suele ser 0,45 aunque también se puede ajustar como parámetro en el modelo.
+	
+	
+	\item \textit{Offset}: el \textit{offset} se refiere a la distancia medida desde la esquina superior izquierda de la celda con mayor probabilidad de contener un objeto \cite{10}. Esta medida es una forma eficiente de representar la posición de las cajas y reduce significativamente la cantidad de cálculos necesarios, lo que aumenta la eficiencia computacional del modelo \cite{9}. Una vez obtenido el \textit{offset}, se utilizan estos valores para calcular las coordenadas de las cajas que no fueron descartadas.
+	\item Tensor: hace referencia a un vector utilizado para representar la probabilidad \cite{11} de que cada uno de los objetos incluidos en el \textit{dataset} COCO \cite{3} se encuentre en la caja . Esta representación no solo permite determinar la posición de diferentes objetos en la imagen, sino también discriminarlos por clases. La clase con mayor probabilidad es entonces reportada por el modelo.  
+\end{itemize}
+
+Es importante tener en cuenta que estos no son los parámetros finales arrojados por el modelo, sino que más adelante, la red calcula las coordenadas de la caja con la que se rodeará al objeto. Es decir, para cada objeto detectado, el modelo va a devolver (en ese orden):
+
+\begin{itemize}
+	\item pc: \textit{objectness score}, la probabilidad de que haya un objeto.
+	\item bx: coordenada x del centro de la caja propuesta.
+	\item by: coordenada y del centro de la caja propuesta.
+	\item bh: altura de la caja propuesta.
+	\item bw: ancho de la caja propuesta.
+	\item c: tensor con la probabilidad de ocurrencia de las 80 clases que forman parte del \textit{dataset} COCO.
+\end{itemize}
+
+
+Esto se logra a través del uso de \textit{Anchor Boxes}: cajas de predicción predefinidas que el modelo va refinando a medida que analiza la imagen y calcula las métricas de cada uno de los objetos encontrados. A través de este método es posible eliminar la necesidad de una “ventana deslizante”, lo que a su vez permite analizar la totalidad de la imagen en un tiempo mucho menor que los métodos basados en aquel método, y, en consecuencia, se hace posible llevar a cabo un análisis en tiempo real. 
+
+Dadas las bondades explicadas anteriormente, en conjunto con su facilidad de implementación en Python, se escogió partir del modelo YoloV3 y modificar su código fuente para lograr generar y extraer la información pertinente para completar el propósito del trabajo. Cabe aclarar que la decisión de utilizar este modelo se vio reforzada una vez se ejecutó la primera versión en tanto que el modelo está optimizado para funcionar con la tarjeta gráfica (NVIDIA Titan X), el código se pudo ejecutar satisfactoriamente, sin dejar a un lado los requisitos del trabajo en CPU (AMD Ryzen 5). 
+
+\section{Protocolos de vídeo y transmisión}
+
+El módulo del trabajo encargado de extraer y permitir el cálculo sobre cada uno de los \textit{frames} es OpenCV, por lo que los protocolos de vídeo aceptados corresponderán a los aceptados por OpenCV. En este sentido, el código está en capacidad de detectar intrusos en:
+
+\begin{itemize}
+	\item Vídeo guardado localmente
+	\item Secuencia de imágenes
+	\item URL de \textit{streaming} de vídeo
+	\item \textit{Pipeline} Gstreamer
+	\item Datos obtenidos desde \textit{webcam}
+\end{itemize}
+
+Sin embargo, es importante mencionar que, durante el desarrollo, se hicieron pruebas únicamente con los métodos de vídeo guardado localmente y URL de \textit{streaming} de vídeo. Los otros métodos no han sido probados, y, por lo tanto, no se podrá garantizar su correcto funcionamiento al solicitar al módulo ejecutarse utilizándolos como origen de datos. 
+
+Por otro lado, y recordando que se trata de la biblioteca que hace posible extraer la información del vídeo para hacer posible su análisis, es de vital importancia tener en mente cuáles son los formatos de vídeo admitidos por OpenCV. Dentro de ellos se encuentran:
+
+\begin{itemize}
+	\item H264
+	\item MPEG4
+	\item AV1
+\end{itemize}
+
+Ahora bien, para acceder a ellos, bastará con pasar el link apropiado al método encargado. Dentro de los protocolos probados durante el desarrollo del trabajo se encuentran:
+
+\begin{itemize}
+	\item MQTT: es un protocolo que permite la comunicación entre dispositivos desarrollado por IBM. Este protocolo es considerado muy seguro debido a que utiliza un intermediario llamado MQTT Broker para el intercambio de información entre el servidor y el cliente. De esta forma, ninguna de las partes tiene acceso directo a los datos del otro, visto que solo cuentan con la información para acceder al MQTT Broker. En cambio, el cliente solicita una suscripción a un tema que le interesa (en este caso la transmisión de vídeo), y el agente se encarga de distribuir los mensajes enviados por el servidor. Está pensado especialmente para dispositivos IoT con recursos limitados y conexiones con poco ancho de banda. 
+	\item RTMP: es un protocolo diseñado específicamente para la transmisión de audio y vídeo con gran rendimiento. Esto lo logra dividiendo la información en pequeños fragmentos, cuyo tamaño puede ser negociado de manera dinámica entre el cliente y el servidor de forma que la transmisión de vídeo se adapta mejor a las condiciones de la red de la que depende la transmisión. Sin embargo, dado que se trata de un protocolo diseñado para la transmisión de vídeo y audio con el menor \textit{delay} posible, este protocolo puede no ser el más adecuado cuando las condiciones de la red son limitadas. 
+\end{itemize}
+
+\section{Software y hardware utilizados} 
+
+Para su funcionamiento, este trabajo requiere la presencia de algunos paquetes de software instalados en la máquina, los cuales son llamados directamente por el usuario cuando requiera la funcionalidad (por ejemplo, OBS Studio), o bien, que ya vienen incorporados en el código y por lo tanto, son un requisito indispensable para el trabajo y deberán encontrarse instalados. Dicho esto, es posible clasificar el software utilizado en tres categorías:
+
+
+1. Paquetes de Python: son paquetes importados en el código a través del comando \textit{import}. Cabe mencionar que todos los paquetes son de código abierto. Ejemplos de estos paquetes son:
+ 
+\begin{itemize}
+	\item Numpy
+	\item Matplotlib
+	\item OpenCV
+\end{itemize}
+ 
+2. Código en Python: en especial para la implementación de la metodología YOLOV3. En internet está disponible el código fuente en formato Python (py).
+
+3. Software completo: en particular para la retransmisión del vídeo procesado, se utilizó OBS Studio. Esta decisión responde a que, dentro del alcance del trabajo, no se definió ninguna actividad que no se encuentre directamente relacionada con la implementación de la detección de intrusos. Sin embargo, dado que se trata de un trabajo en el que se debe devolver la imagen procesada, es importante asegurarse que la retransmisión de los datos funcione de la manera correcta.
+
+Más específicamente, las diferentes bibliotecas y paquetes de software utilizados para el desarrollo de este trabajo son:
+
+% Please add the following required packages to your document preamble:
+% \usepackage{graphicx}
+\begin{table}[h]
+\centering
+\caption{Software requerido para el desarrollo y la ejecución del módulo.}
+\label{software-requerido-mini}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{ll}
+\toprule
+\multicolumn{1}{l}{\textbf{Paquete}} & \multicolumn{1}{l}{\textbf{Función}}                       \\ \hline
+PIP                         & Gestor de bibliotecas para Python                 \\
+Numpy                       & Cálculos matriciales                              \\
+OpenCV                      & Manipulación de imágenes y visión por computadora \\
+Matplotlib                  & Creación de visualizaciones con Python            \\
+Tensorflow                  & \textit{Framework} de machine learning                     \\
+Pycharm                     & Ambiente de desarrollo                            \\
+OBS Studio                  & \textit{Streaming} de vídeo                                \\
+Python                      & Lenguaje en el que fue programado el módulo       \\
+Ubuntu                      & Sistema operativo                                 \\ 
+\bottomrule
+\end{tabular}%
+}
+\end{table}
+
+Es importante tener en cuenta que la totalidad de programas y bibliotecas utilizadas, tanto para el desarrollo, como para la ejecución del trabajo son software libre, por lo que no se requerirá adquirir ningún tipo de licencia para ponerlo en funcionamiento. En el apéndice \ref{AppendixA} se encuentra la tabla completa que incluye tipo de biblioteca, licencia y versión utilizada.
+
+De igual manera, cabe resaltar que OBS Studio es el programa de retransmisión elegido teniendo en cuenta que esta es una característica que se encuentra fuera del alcance del trabajo y por lo tanto, cuya implementación es necesaria a través de este método mientras que hacerlo a través de software integrado en el código fuente (como FFMpeg) será parte del alcance de trabajos posteriores. 
+
+El paquete de Python ya viene instalado por defecto en la instalación de Ubuntu, por lo que no se requerirá su instalación. El resto de los paquetes, sin embargo, deberán ser instalados de acuerdo con el manual de instalación que se entrega al cliente, en el que se detalla de manera minuciosa cuál es el procedimiento que se debe seguir a fin de instalar correctamente todos los paquetes. 
+
+De igual manera, se debe tener en cuenta que dadas las restricciones de la máquina en la que se desarrolló el trabajo, la totalidad del desarrollo fue llevado a cabo en máquinas virtuales a través del uso de programas de virtualización como VMware Workstation \cite{7}. 
+Dentro de los requerimientos mínimos de hardware del trabajo, se tienen los siguientes:
+
+\begin{itemize}
+
+	\item Procesador: AMD Ryzen 5
+	\item Tarjeta gráfica: no requerida
+	\item Memoria RAM: 6 GB. 
+
+\end{itemize}
+
+Es importante tener en cuenta que los listados anteriormente son los requisitos mínimos del sistema, que van a garantizar que el trabajo se ejecute cumpliendo con los requerimientos del cliente. Sin embargo, se recomiendan las siguientes características del sistema para un rendimiento óptimo a la hora de ejecutar el módulo.
+
+\begin{itemize}
+
+	\item Procesador: Intel Core i7
+	\item Tarjeta gráfica: NVidia Tesla T4 o NVidia Titan X.
+	\item Memoria RAM: 8 GB. 
+
+\end{itemize}
+
+El modelo YoloV3, sobre el que está basado el desarrollo del trabajo utiliza de manera extensiva la API Cuda de NVIDIA. Por este motivo, tratar de ejecutar el módulo en tarjetas gráficas de AMD resultará en el modelo siendo llevado al procesador por Tensorflow. En consecuencia, se afirmará que el trabajo resulta incompatible con estas tarjetas gráficas. Esto fue comprobado con el uso de una tarjeta AMD Radeon Vega 8. 

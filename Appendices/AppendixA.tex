@@ -1,0 +1,31 @@
+% Appendix A
+
+\chapter{Tablas extendidas} % Main appendix title
+
+\label{AppendixA} % For referencing this appendix elsewhere, use \ref{AppendixA}
+
+% Please add the following required packages to your document preamble:
+% \usepackage{graphicx}
+\begin{table}[h]
+\centering
+\caption{Software requerido para el desarrollo y la ejecución del módulo.}
+\label{software-requerido}
+\resizebox{\columnwidth}{!}{%
+\begin{tabular}{llll}
+\hline
+\toprule
+\multicolumn{1}{l}{\textbf{Paquete}} & \multicolumn{1}{l}{\textbf{Tipo}} & \multicolumn{1}{l}{\textbf{Licencia}}                 & \multicolumn{1}{l}{\textbf{Versión}} \\ \hline
+PIP        & Gestor de bibliotecas & MIT      & 22.0.2          \\
+Numpy      & Biblioteca de Python  & BSD      & 1.21.5          \\
+OpenCV     & Biblioteca de Python  & Apache 2 & 4.5.4           \\
+Matplotlib & Biblioteca de Python  & BSD      & 3.6.2           \\
+Tensorflow & Biblioteca de Python  & Apache 2 & 2.10.1          \\
+Pycharm                     & Software completo        & Apache 2                                     & 2022.3.3 Community edition  \\
+OBS Studio & Software completo     & GPLv2    & 28.1.2 (64 Bit) \\
+Python                      & Lenguaje de programación & Python Software Foundation License Version 2 & 3.10.6                      \\
+Ubuntu                      & Sistema operativo        & Creative Commons CC-BY-SA version 3.0 UK     & 22.04.1 LTS (64 Bit)        \\ 
+
+\bottomrule
+\end{tabular}%
+}
+\end{table}

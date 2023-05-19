@@ -1,0 +1,67 @@
+% Chapter Template
+
+\chapter{Conclusiones} % Main chapter title
+
+\label{Chapter5} % Change X to a consecutive number; for referencing this chapter elsewhere, use \ref{ChapterX}
+
+
+%----------------------------------------------------------------------------------------
+
+%----------------------------------------------------------------------------------------
+%	SECTION 1
+%----------------------------------------------------------------------------------------
+
+En este capítulo se detallan los resultados obtenidos del proceso del desarrollo del módulo. Es decir, se hace un recuento de las características finales del mínimo producto viable que resultó de este proceso sin detallar ejecuciones específicas. 
+
+\section{Resultados Obtenidos}
+Del desarrollo del modelo surgieron una serie de conclusiones que representan, o bien, trabajos futuros (detallados en secciones posteriores), o recomendaciones para que se pueda sacar el provecho adecuado al módulo.
+ 
+Por un lado, sale a relucir la importancia del uso de las versiones adecuadas de software. El no hacerlo puede implicar que el usuario vea fuertes inestabilidades en el funcionamiento del módulo. Por ejemplo, utilizar versiones no LTS \textit{(Long Term Support)} de Ubuntu, implicará que, en un tiempo corto, el sistema no podrá acceder a los paquetes requeridos para la correcta ejecución.
+
+Igualmente, es muy importante tener en cuenta que a pesar de que es posible tomar algunos modelos generales de visión por computadora, estos son de fácil modificación. Lo anterior expuesto se hace muy evidente a través del desarrollo de este trabajo, es decir, crear módulos personalizados de visión por computadora es muy sencillo. Esto puede ser de gran utilidad para diferentes industrias que pueden aprovechar el poder de este tipo de herramientas, manteniendo a su personal ocupado con tareas que generen un mayor valor. 
+
+Ahora bien, dados algunos cambios que se presentaron según avanzó el trabajo, no fue posible cumplir estrictamente con lo planeado: por cambios en las prioridades en el proyecto, el proceso de pruebas no pudo ser llevado a cabo, porque se le dio prioridad al sistema de reporte visual. Esto implica que el usuario tiene más maneras de monitorear los resultados del módulo y tomar decisiones informadas. De igual manera, se hace más sencillo identificar falsos positivos y falsos negativos que puedan aparecer.
+
+%----------------------------------------------------------------------------------------
+%	SECTION 2
+%----------------------------------------------------------------------------------------
+\section{Tiempos de ejecución}
+
+A pesar de que los tiempos de ejecución medidos a través del uso de procesamiento con CPU y máquinas virtuales cumplen con lo estipulado en la fase de definición de los requisitos del módulo con el cliente (según se detallan en el capítulo 4), dadas las restricciones de los \textit{frameworks} utilizados comúnmente en la implementación de sistemas de inteligencia artificial, no fue posible probar con las tarjetas gráficas apropiadas, dado que no se contó con el equipo. Sin embargo, se espera que este rendimiento mejore sustancialmente.
+
+A fin de poder realizar estas pruebas, sin embargo, se requerirá contar con una de las siguientes opciones:
+
+\begin{enumerate}
+
+	\item Computadora que cuente, idealmente, con una tarjeta gráfica NVidia Tesla T4 o NVidia Titan X (según referenciado en el capítulo 2).
+	
+	\item Código que no requiera de la generación de una ventana para la retransmisión de los \textit{frames}. Esto permitirá montar el módulo en un servicio de \textit{Cloud Computing} (como Google Cloud), en donde es posible alquilar tarjetas gráficas con este tipo de especificaciones, o bien, ejecutar pruebas sobre el código en Google Colab, en donde se podrán medir más fielmente los tiempos de ejecución del módulo. 
+
+\end{enumerate}
+
+\section{Trabajos futuros}
+
+Teniendo en cuenta que se trata de un mínimo producto viable, cabe aclarar que los siguientes trabajos son aún necesarios para que el cliente pueda contar con un módulo de inteligencia artificial que se ajuste de manera adecuada a sus necesidades. Dentro de estos trabajos futuros están:
+
+\begin{itemize}
+
+	\item Añadir al módulo la capacidad de retransmitir los \textit{frames} procesados. Esto eliminará la necesidad de utilizar software externo como OBS Studio.
+	\item El módulo deberá ser optimizado muy fuertemente. Esto implica que se sigan los siguientes pasos:
+	
+	\begin{itemize}
+		
+		\item Actualmente el módulo detecta la totalidad de las clases del \textit{dataset} COCO y descarta las clases que no se requieren durante el paso de reporte. Esto implica que el sistema hace una gran cantidad de cálculos innecesarios, correspondientes a clases que no se requieren por el cliente. 		
+		
+		\item Se deberá reentrenar los pesos a fin de evitar la ocurrencia de falsos positivos, así como reducir la ocurrencia de falsos negativos.
+		
+		\item Para versiones más avanzadas del código, se hará necesaria la generación, en conjunto con el cliente, de definiciones más precisas de qué se considera aceptable en una matriz de confusión. 
+		
+	\end{itemize}
+	
+	\item Algunos de los requisitos del cliente (particularmente la detección en vuelos nocturnos) no pudieron ser cubiertos. Es imperativo entonces hacer las pruebas y ajustes correspondiente una vez exista el material de vuelos en horas de la noche.
+	
+	\item Empaquetar el módulo, idealmente en formato .deb, de forma que distribuir con facilidad. 
+	
+	\item Durante el desarrollo de este trabajo se descartó el uso de Raspberry Pi para el desarrollo de módulos a bordo del dron dadas las limitaciones del modelo utilizado (Raspberry Pi 2 Modelo B). Se deberá utilizar placas Rasbperry Pi más avanzadas, de preferencia Raspberry Pi 4. 
+
+\end{itemize}

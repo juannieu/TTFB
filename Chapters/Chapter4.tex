@@ -1,0 +1,129 @@
+% Chapter Template
+
+\chapter{Ensayos y resultados} % Main chapter title
+
+\label{Chapter4} % Change X to a consecutive number; for referencing this chapter elsewhere, use \ref{ChapterX}
+
+%----------------------------------------------------------------------------------------
+%	SECTION 1
+%----------------------------------------------------------------------------------------
+Este capítulo detalla las distintas pruebas que se hicieron sobre el módulo, así como el proceso de descarte de módulos a bordo de los drones. De igual manera, detalla los resultados obtenidos durante estos ensayos y los criterios utilizados para dar por cerrados los distintos requerimientos presentados en el capítulo 1. Finalmente, se explican los resultados mostrados durante una ejecución exitosa del módulo. 
+
+\section{Descripción del proceso de pruebas}
+%\label{sec:pruebasHW}
+
+A pesar de que esto se estipuló en la concepción inicial del trabajo, conforme se dio su avance no se hizo posible llevar a cabo un proceso formal de pruebas al módulo. Sin embargo, el cliente estuvo involucrado directamente en el proceso de verificación de la funcionalidad del módulo a través de reuniones quincenales.
+
+En estas reuniones fue posible hacer un seguimiento muy cercano y dar aprobación a las siguientes características para el funcionamiento del módulo. Durante estas reuniones se hizo posible dar por aprobado el código presentado para el trabajo, teniendo en cuenta que se cumplió con los siguientes criterios:
+
+\begin{itemize}
+
+	\item El módulo obtiene correctamente los \textit{frames} enviados por el cliente en el servidor que este dispone para tal fin.
+	\item El módulo detecta intrusos en un tiempo no mayor a 4 segundos, aún cuando se ejecute en sistemas considerablemente menores a los que se espera lo ejecuten. En particular, utilizando CPU en vez de GPU durante la detección.
+	\item La precisión del modelo es razonable.
+	\item Fue posible hacer la detección en tiempo real. Es decir, no solo se ejecutó con vídeos de prueba grabados por el cliente, sino que el módulo también se ejecutó correctamente durante vuelos transmitidos en tiempo real.
+	\item El módulo es capaz de detectar intrusos en varios \textit{streamings} de vídeo. Se deja la anotación que para que esto se logre, se deberá preprocesar el vídeo de forma que todos los \textit{streamings} vengan combinados en un único \textit{frame}. El módulo no tiene la capacidad de ejecutar varias instancias de manera paralela. 
+	\item Se realizó una serie de pruebas durante estas reuniones, en las que se evidenció el funcionamiento del módulo. 
+
+\end{itemize}
+
+Para este visto bueno, no fueron considerados los siguientes requisitos, a pesar de que se trata de tareas que fueron ejecutadas:
+
+\begin{itemize}
+	\item Documentación del módulo.
+	\item Facilidad de uso del módulo.
+	\item Sistema operativo en el que se ejecutará el módulo. A pesar de que, durante la etapa de planificación, no se especificó el sistema operativo en el que se ejecutará el modelo, este fue diseñado para ejecutarse en Ubuntu 22.04. 
+\end{itemize}
+
+\section{Pruebas en Raspberry Pi}
+
+Desde la concepción inicial del trabajo, se estableció que se tendrían dos caminos para poder desarrollarlo: por un lado, se planteó que el módulo debía ser capaz de reconocer intrusos en varios \textit{streamings} de vídeo simultáneos (camino que finalmente se vio favorecido), o bien, hacer que el módulo fuese capaz de correr en equipos a bordo de los drones. Para esto, se llevaron a cabo una serie de pruebas y ensayos en equipos Raspberry Pi. Más concretamente, las especificaciones de los equipos sobre los que se hicieron las pruebas son:
+
+\begin{itemize}
+	\item Modelo: Raspberry Pi 2 modelo B
+	\item Sistema operativo: Raspberry Pi OS (Debian 11 – Bullseye)
+	\item CPU quad-core ARM Cortex-A7 900MHz
+	\item Memoria ram: 1 Gb.
+	\item Overclocking: Desactivado
+
+\end{itemize}
+
+Específicamente, el modelo con el que se tuvo los problemas más importantes a la hora de la instalación fue la versión completa de Tensorflow, requerida para la ejecución del módulo. Cabe mencionar que las placas Raspberry Pi son compatibles con la versión Lite de Tensorflow. Dicho esto, se intentaron cinco métodos para la instalación de esta biblioteca. Ninguno de ellos fue exitoso. El proceso llevado a cabo en cada una de las cinco instalaciones fue el siguiente:
+
+\begin{itemize}
+ \item Instalación 1 \cite{16}:
+ 	\begin{itemize}
+ 
+ 		\item instalación de Tensorflow: utilizando PIP.
+ 		\item se clona el repositorio de GIT de Tensorflow.
+ 	
+ 	\end{itemize}
+ \item Instalación 2 \cite{17}:
+ 	\begin{itemize}
+ 		\item instalación de Tensorflow: utilizando PIP y el comando –no-cache-dir.
+ 	\end{itemize}
+ \item Instalación 3 \cite{19}:
+ 	\begin{itemize}
+ 		\item instalación de Tensorflow Lite: utilizando PIP.
+ 	\end{itemize}
+ \item Instalación 4 \cite{18}:
+ 	\begin{itemize}
+		\item instalación de Libatlas: utilizando PIP.
+ 		\item instalación de Tensorflow: utilizando PIP.
+ 	\end{itemize}
+ \item Instalación 5 \cite{20}:
+ 	\begin{itemize}
+ 		\item Descarga de los paquetes y llaves disponibles en:
+ 			\begin{itemize} 
+ 				\item https://packages.cloud.google.com/apt
+ 				\item https://packages.cloud.google.com/apt/doc/apt-key.gpg
+ 			\end{itemize}
+ 		\item Se agregaron estos paquetes y llaves a Debian.
+ 		\item Instalación de Libatlas: usando PIP.
+ 		\item Instalación de Tensorflow: usando PIP.
+ 	\end{itemize}
+\end{itemize}
+
+
+Al tratar de importar esta biblioteca en el código de Python, se obtuvo un fallo en todas las instancias, por lo que se decidió no continuar con esta aproximación para dar solución a la problemática. Es importante destacar que, dado que el módulo se desarrolló tomando como base el modelo YOLOv3 original (no el modelo Lite), no se cumplía con las especificaciones requeridas por este tipo de equipos, y una segunda implementación del modelo utilizando la versión YOLOv3 Lite hubiese implicado en sí, el trabajo equivalente a un módulo completo adicional.
+
+De igual manera atrae particular atención mencionar que la placa con la que se contaba era un modelo antiguo de Raspberry Pi (Raspberry Pi 2 Modelo B de febrero de 2015), que no cuenta con una compatibilidad tan completa como la que se da con una Raspberry Pi 4. Es, entonces, muy importante considerar placas más avanzadas, como la Raspberry 4, en caso de que se decida continuar con el desarrollo de módulos a bordo de los drones.  
+
+
+\section{Caso de Uso}
+
+Una vez establecido el funcionamiento interno del módulo, se hace importante también tener en cuenta el flujo de trabajo para iniciarlo y ponerlo en funcionamiento. Se contemplar las siguientes consideraciones para que se pueda iniciar el módulo de la manera correcta:
+
+\begin{itemize}
+
+	\item Se debe contar con los links a los servidores de transmisión y recepción.
+	\item El servidor de conexión debe estar transmitiendo.
+	\item Se debe contar con la llave de transmisión proporcionada por el cliente.
+
+\end{itemize}
+
+En total, se debe seguir n pasos (contando el paso 0 de inicio de sesión en el sistema operativo y 1 de instalación) para lograr el funcionamiento esperado del módulo:
+
+\begin{enumerate}
+	\item El usuario deberá iniciar sesión en Ubuntu 22.04 LTS. Deberá cerciorarse que lo haga utilizando xorg. A pesar de que esta versión Ubuntu es compatible con el gestor de ventanas Wayland, su uso podrá causar una ejecución inestable del módulo. 
+	\item Instalación del módulo: este paso contempla la instalación del módulo en una instalación nueva de Ubuntu 22.04 LTS. Para esto, el usuario se deberá remitir al manual de instalación que se entregó al cliente. Como esta versión no cuenta con una versión empaquetada en formato .deb (compatible con los sistemas basados en Debian), este paso incluirá la descarga de un IDE y la correspondiente apertura del código fuente.
+	\item Ejecutar el código fuente en el archivo Main. Esto permitirá la apertura de la interfaz gráfica (visible en la figura \ref{fig:gui}). Aquí el usuario podrá introducir el link proporcionado por el cliente.
+	\item En el caso de una conexión exitosa al servidor de transmisión, el usuario verá que aparecerá una ventana en su pantalla mostrando los \textit{frames} procesados por el módulo. Este no fue uno de los requisitos expuestos en la etapa de planificación del proyecto: fue agregado posteriormente durante el desarrollo del trabajo.  
+	\item El usuario encontrará en su carpeta de documentos el archivo CSV con todas las detecciones de la fecha.
+	\item A fin de retransmitir los \textit{frames} procesados de regreso a los servidores del cliente, el usuario deberá abrir OBS Studio de manera independiente. Dentro de este programa, el usuario deberá seguir los siguientes pasos:
+	\begin{enumerate}
+		\item Crear un nuevo origen de datos, que corresponderá a la ventana generada por el módulo (mencionada el paso 3).
+		\item Dirigirse a las configuraciones de OBS Studio, particularmente en la pestaña \textit{Stream}.
+		\item Proporcionar el link de \textit{streaming} y su respectiva llave de transmisión.
+	\end{enumerate}
+	\item Observar el \textit{streaming} en el visor que el cliente disponga para este fin. 
+\end{enumerate}
+
+De igual manera, una vez logrado esto, es importante observar los resultados obtenidos durante la ejecución del módulo: 
+
+\begin{itemize}
+	\item El módulo se ejecutó con un promedio de 0,54 fps. Este valor es mayor al requisito del cliente de procesar un número mayor a 0,25 fps. Estos valores se lograron con CPU, ejecutados en una máquina virtual.
+	\item En promedio se pierden en la transmisión, un 15\% de los \textit{frames}. Si bien, el módulo los reporta (según la imagen \ref{fig:grecia}), es capaz de recuperarse satisfactoriamente de esta situación.
+	\item El modelo requiere un breve período de calentamiento para lograr las métricas mencionadas arriba. En este momento los fps son menores a los que logrará el modelo en su ejecución normal. 
+
+\end{itemize}

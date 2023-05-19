@@ -1,0 +1,161 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Template license:
+% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\documentclass[
+11pt, % The default document font size, options: 10pt, 11pt, 12pt
+%oneside, % Two side (alternating margins) for binding by default, uncomment to switch to one side
+%chapterinoneline,% Have the chapter title next to the number in one single line
+spanish,
+singlespacing, % Single line spacing, alternatives: onehalfspacing or doublespacing
+%draft, % Uncomment to enable draft mode (no pictures, no links, overfull hboxes indicated)
+%nolistspacing, % If the document is onehalfspacing or doublespacing, uncomment this to set spacing in lists to single
+%liststotoc, % Uncomment to add the list of figures/tables/etc to the table of contents
+%toctotoc, % Uncomment to add the main table of contents to the table of contents
+parskip, % Uncomment to add space between paragraphs
+%codirector, % Uncomment to add a codirector to the title page
+headsepline, % Uncomment to get a line under the header
+sidewaystable
+lscape
+]{MastersDoctoralThesis} % The class file specifying the document structure
+
+\usepackage{lscape}
+\usepackage{multirow}
+\usepackage{float}
+\renewcommand{\labelenumii}{\arabic{enumi}.\arabic{enumii}}
+\renewcommand{\labelenumiii}{\arabic{enumi}.\arabic{enumii}.\arabic{enumiii}}
+\renewcommand{\labelenumiv}{\arabic{enumi}.\arabic{enumii}.\arabic{enumiii}.\arabic{enumiv}}
+
+%----------------------------------------------------------------------------------------
+%	INFORMACIÓN DE LA MEMORIA
+%----------------------------------------------------------------------------------------
+
+\thesistitle{Reconocimiento de intrusos en video de vigilancia aérea} % El títulos de la memoria, se usa en la carátula y se puede usar el cualquier lugar del documento con el comando \ttitle
+
+% Nombre del posgrado, se usa en la carátula y se puede usar el cualquier lugar del documento con el comando \degreename
+%\posgrado{Carrera de Especialización en Inteligencia Artificial} 
+%\posgrado{Carrera de Especialización en Internet de las Cosas} 
+\posgrado{Carrera de Especialización en Inteligencia Artificial}
+%\posgrado{Maestría en Sistemas Embebidos} 
+%\posgrado{Maestría en Internet de las cosas}
+
+\author{Ing. Juan Pablo Nieto Uribe} % Tu nombre, se usa en la carátula y se puede usar el cualquier lugar del documento con el comando \authorname
+
+\director{Esp. Ing. Hernán Contigiani (FIUBA)} % El nombre del director, se usa en la carátula y se puede usar el cualquier lugar del documento con el comando \dirname
+\codirector{Nombre del codirector (pertenencia)} % El nombre del codirector si lo hubiera, se usa en la carátula y se puede usar el cualquier lugar del documento con el comando \codirname.  Para activar este campo se debe descomentar la opción "codirector" en el comando \documentclass, línea 23.
+
+\juradoUNO{Nombre del jurado 1 (pertenencia)} % Nombre y pertenencia del un jurado se usa en la carátula y se puede usar el cualquier lugar del documento con el comando \jur1name
+\juradoDOS{Nombre del jurado 2 (pertenencia)} % Nombre y pertenencia del un jurado se usa en la carátula y se puede usar el cualquier lugar del documento con el comando \jur2name
+\juradoTRES{Nombre del jurado 3 (pertenencia)} % Nombre y pertenencia del un jurado se usa en la carátula y se puede usar el cualquier lugar del documento con el comando \jur3name
+
+%\ciudad{Ciudad Autónoma de Buenos Aires}
+%\ciudad{ciudad de Mendoza}
+\ciudad{ciudad de Bogotá, Colombia}
+
+\fechaINICIO{octubre de 2021}
+\fechaFINAL{junio de 2023}
+
+
+\keywords{Inteligencia artificial, FIUBA,dron, vigilancia} % Keywords for your thesis, print it elsewhere with \keywordnames
+
+
+\begin{document}
+
+
+\frontmatter % Use roman page numbering style (i, ii, iii, iv...) for the pre-content pages
+
+\pagestyle{plain} % Default to the plain heading style until the thesis style is called for the body content
+
+
+%----------------------------------------------------------------------------------------
+%	RESUMEN - ABSTRACT 
+%----------------------------------------------------------------------------------------
+
+\begin{abstract}
+\addchaptertocentry{\abstractname} % Add the abstract to the table of contents
+%
+%The Thesis Abstract is written here (and usually kept to just this page). The page is kept centered vertically so can expand into the blank space above the title too\ldots
+\centering
+
+La presente memoria detalla el proceso de creación de un módulo de inteligencia artificial, diseñado para implementar un sistema de detección de personas y animales de gran porte de forma que sea posible automatizar el proceso de vigilancia y así reducir el personal encargado a esta labor, y permitiendo abaratar costos y aumentar la precisión en el proceso. En particular, lo que se pretende con el desarrollo de este trabajo es detectar intrusos en \textit{streaming} de vídeo tomado desde un dron, como parte de un sistema más grande de vigilancia, que será implementado por la empresa Manta Beach. Esta empresa, que hace parte del programa de vinculación de la universidad, propuso el trabajo como parte de su plan de investigación y desarrollo.
+
+Para la creación de este módulo, se hace un uso extensivo de los conocimientos de la rama de visión por computadora a través de redes neuronales convolucionales. De igual manera, se ha requerido una base sólida en Python, teniendo en cuenta que se partió de un algoritmo establecido con anterioridad.
+
+\end{abstract}
+
+%----------------------------------------------------------------------------------------
+%	CONTENIDO DE LA MEMORIA  - AGRADECIMIENTOS
+%----------------------------------------------------------------------------------------
+
+\begin{acknowledgements}
+%\addchaptertocentry{\acknowledgementname} % Descomentando esta línea se puede agregar los agradecimientos al índice
+\vspace{1.5cm}
+
+%A Iván. Por tu intuición.  
+
+\end{acknowledgements}
+
+%----------------------------------------------------------------------------------------
+%	LISTA DE CONTENIDOS/FIGURAS/TABLAS
+%----------------------------------------------------------------------------------------
+
+\tableofcontents % Prints the main table of contents
+
+\listoffigures % Prints the list of figures
+
+\listoftables % Prints the list of tables
+
+
+%----------------------------------------------------------------------------------------
+%	CONTENIDO DE LA MEMORIA  - DEDICATORIA
+%----------------------------------------------------------------------------------------
+
+\dedicatory{\textbf{A Iván. Por tu intuición.}}  % escribir acá si se desea una dedicatoria
+
+%----------------------------------------------------------------------------------------
+%	CONTENIDO DE LA MEMORIA  - CAPÍTULOS
+%----------------------------------------------------------------------------------------
+
+\mainmatter % Begin numeric (1,2,3...) page numbering
+
+\pagestyle{thesis} % Return the page headers back to the "thesis" style
+
+% Incluir los capítulos como archivos separados desde la carpeta Chapters
+
+\include{Chapters/Chapter1}
+\include{Chapters/Chapter2} 
+\include{Chapters/Chapter3}
+\include{Chapters/Chapter4} 
+\include{Chapters/Chapter5} 
+
+%----------------------------------------------------------------------------------------
+%	CONTENIDO DE LA MEMORIA  - APÉNDICES
+%----------------------------------------------------------------------------------------
+
+\appendix % indicativo para indicarle a LaTeX los siguientes "capítulos" son apéndices
+
+% Incluir los apéndices de la memoria como archivos separadas desde la carpeta Appendices
+% Descomentar las líneas a medida que se escriben los apéndices
+
+\include{Appendices/AppendixA}
+%\include{Appendices/AppendixB}
+%\include{Appendices/AppendixC}
+
+%----------------------------------------------------------------------------------------
+%	BIBLIOGRAPHY
+%----------------------------------------------------------------------------------------
+
+\Urlmuskip=0mu plus 1mu\relax
+\raggedright
+\printbibliography[heading=bibintoc]
+
+%----------------------------------------------------------------------------------------
+
+\end{document}  

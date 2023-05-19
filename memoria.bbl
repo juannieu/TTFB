@@ -1,0 +1,481 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 3.2 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated as
+% required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+\datalist[entry]{none/global//global/global}
+  \entry{5}{misc}{}
+    \name{author}{1}{}{%
+      {{hash=SDA}{%
+         family={Services},
+         familyi={S\bibinitperiod},
+         given={Drone\bibnamedelima AI},
+         giveni={D\bibinitperiod\bibinitdelim A\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{SDA1}
+    \strng{fullhash}{SDA1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{note}{Último acceso el 28 de marzo de 2023}
+    \field{title}{Drones de seguridad privada ¿Cómo funcionan?}
+    \verb{url}
+    \verb https://www.droneservices.com.ar/industria-4-0/drones-de-seguridad-pr
+    \verb ivada/
+    \endverb
+    \field{year}{2020}
+  \endentry
+
+  \entry{4}{inproceedings}{}
+    \name{author}{2}{}{%
+      {{hash=HJ}{%
+         family={Henrio},
+         familyi={H\bibinitperiod},
+         given={Jordan},
+         giveni={J\bibinitperiod},
+      }}%
+      {{hash=NT}{%
+         family={Nakashima},
+         familyi={N\bibinitperiod},
+         given={Tomoharu},
+         giveni={T\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{HJNT1}
+    \strng{fullhash}{HJNT1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \verb{doi}
+    \verb 10.1109/SMC.2018.00429
+    \endverb
+    \field{pages}{2503\bibrangedash 2508}
+    \field{title}{Anomaly Detection in Videos Recorded by Drones in a
+  Surveillance Context}
+    \field{month}{10}
+    \field{year}{2018}
+  \endentry
+
+  \entry{1}{article}{}
+    \name{author}{4}{}{%
+      {{hash=RJ}{%
+         family={Redmon},
+         familyi={R\bibinitperiod},
+         given={Joseph},
+         giveni={J\bibinitperiod},
+      }}%
+      {{hash=DSK}{%
+         family={Divvala},
+         familyi={D\bibinitperiod},
+         given={Santosh\bibnamedelima Kumar},
+         giveni={S\bibinitperiod\bibinitdelim K\bibinitperiod},
+      }}%
+      {{hash=GRB}{%
+         family={Girshick},
+         familyi={G\bibinitperiod},
+         given={Ross\bibnamedelima B.},
+         giveni={R\bibinitperiod\bibinitdelim B\bibinitperiod},
+      }}%
+      {{hash=FA}{%
+         family={Farhadi},
+         familyi={F\bibinitperiod},
+         given={Ali},
+         giveni={A\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{RJ+1}
+    \strng{fullhash}{RJDSKGRBFA1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \verb{eprint}
+    \verb 1506.02640
+    \endverb
+    \field{title}{You Only Look Once: Unified, Real-Time Object Detection}
+    \verb{url}
+    \verb http://arxiv.org/abs/1506.02640
+    \endverb
+    \field{volume}{abs/1506.02640}
+    \field{journaltitle}{CoRR}
+    \field{eprinttype}{arXiv}
+    \field{year}{2015}
+  \endentry
+
+  \entry{2}{article}{}
+    \name{author}{2}{}{%
+      {{hash=RJ}{%
+         family={Redmon},
+         familyi={R\bibinitperiod},
+         given={Joseph},
+         giveni={J\bibinitperiod},
+      }}%
+      {{hash=FA}{%
+         family={Farhadi},
+         familyi={F\bibinitperiod},
+         given={Ali},
+         giveni={A\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{RJFA1}
+    \strng{fullhash}{RJFA1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \verb{eprint}
+    \verb 1804.02767
+    \endverb
+    \field{title}{YOLOv3: An Incremental Improvement}
+    \verb{url}
+    \verb http://arxiv.org/abs/1804.02767
+    \endverb
+    \field{volume}{abs/1804.02767}
+    \field{journaltitle}{CoRR}
+    \field{eprinttype}{arXiv}
+    \field{year}{2018}
+  \endentry
+
+  \entry{6}{article}{}
+    \name{author}{4}{}{%
+      {{hash=ZH}{%
+         family={Zhao},
+         familyi={Z\bibinitperiod},
+         given={Heng},
+         giveni={H\bibinitperiod},
+      }}%
+      {{hash=ZY}{%
+         family={Zhou},
+         familyi={Z\bibinitperiod},
+         given={Yong},
+         giveni={Y\bibinitperiod},
+      }}%
+      {{hash=ZL}{%
+         family={Zhang},
+         familyi={Z\bibinitperiod},
+         given={Li},
+         giveni={L\bibinitperiod},
+      }}%
+      {{hash=ea}{%
+         prefix={et},
+         prefixi={e\bibinitperiod},
+         family={al.},
+         familyi={a\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {MDPI AG}%
+    }
+    \strng{namehash}{ZH+1}
+    \strng{fullhash}{ZHZYZLae1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \verb{doi}
+    \verb 10.3390/s20071861
+    \endverb
+    \field{issn}{1424-8220}
+    \field{number}{7}
+    \field{pages}{1861}
+    \field{title}{Mixed YOLOv3-LITE: A Lightweight Real-Time Object Detection
+  Method}
+    \verb{url}
+    \verb https://doi.org/10.3390/s20071861
+    \endverb
+    \field{volume}{20}
+    \field{journaltitle}{Sensors (Basel)}
+    \field{year}{2020}
+    \warn{\item Invalid format of field 'month'}
+  \endentry
+
+  \entry{3}{misc}{}
+    \name{author}{1}{}{%
+      {{hash=iCCO}{%
+         prefix={in},
+         prefixi={i\bibinitperiod},
+         family={Context},
+         familyi={C\bibinitperiod},
+         given={Common\bibnamedelima Objects},
+         giveni={C\bibinitperiod\bibinitdelim O\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{CCOi1}
+    \strng{fullhash}{CCOi1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{note}{Último acceso el 28 de marzo de 2023}
+    \field{title}{COCO}
+    \verb{url}
+    \verb https://cocodataset.org/#home
+    \endverb
+  \endentry
+
+  \entry{8}{misc}{}
+    \name{author}{1}{}{%
+      {{hash=NS}{%
+         family={Neelam},
+         familyi={N\bibinitperiod},
+         given={Sairaj},
+         giveni={S\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{NS1}
+    \strng{fullhash}{NS1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{note}{Último acceso el 11 de abril de 2023}
+    \field{title}{YOLO for Object Detection, Architecture Explained!}
+    \verb{url}
+    \verb https://medium.com/analytics-vidhya/understanding-yolo-and-implementi
+    \verb ng-yolov3-for-object-detection-5f1f748cc63a
+    \endverb
+    \field{year}{2021}
+  \endentry
+
+  \entry{14}{misc}{}
+    \name{author}{1}{}{%
+      {{hash=KS}{%
+         family={K},
+         familyi={K},
+         given={Sambasivarao.},
+         giveni={S\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{KS1}
+    \strng{fullhash}{KS1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{note}{Último acceso el 11 de abril de 2023}
+    \field{title}{Non-maximum Suppression (NMS)}
+    \verb{url}
+    \verb https://towardsdatascience.com/non-maximum-suppression-nms-93ce178e17
+    \verb 7c
+    \endverb
+    \field{year}{2019}
+  \endentry
+
+  \entry{12}{misc}{}
+    \name{author}{1}{}{%
+      {{hash=AU}{%
+         family={Almog},
+         familyi={A\bibinitperiod},
+         given={Uri},
+         giveni={U\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{AU1}
+    \strng{fullhash}{AU1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{note}{Último acceso el 11 de abril de 2023}
+    \field{title}{YOLO V3 Explained}
+    \verb{url}
+    \verb https://towardsdatascience.com/yolo-v3-explained-ff5b850390f
+    \endverb
+    \field{year}{2020}
+  \endentry
+
+  \entry{10}{misc}{}
+    \name{author}{1}{}{%
+      {{hash=KW}{%
+         family={Kuang},
+         familyi={K\bibinitperiod},
+         given={Weidong},
+         giveni={W\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{KW1}
+    \strng{fullhash}{KW1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{note}{Último acceso el 11 de abril de 2023}
+    \field{title}{Fundamentals of deep learning: a step-by-step guide Chapter
+  12 Object Detection}
+    \verb{url}
+    \verb https://faculty.utrgv.edu/weidong.kuang/book/chapter12%20object%20det
+    \verb ection.pdf
+    \endverb
+    \field{year}{2023}
+  \endentry
+
+  \entry{9}{misc}{}
+    \name{author}{1}{}{%
+      {{hash=CM}{%
+         family={Chablani},
+         familyi={C\bibinitperiod},
+         given={Manish},
+         giveni={M\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{CM1}
+    \strng{fullhash}{CM1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{note}{Último acceso el 11 de abril de 2023}
+    \field{title}{YOLO — You only look once, real time object detection
+  explained}
+    \verb{url}
+    \verb https://towardsdatascience.com/yolo-you-only-look-once-real-time-obje
+    \verb ct-detection-explained-492dc9230006
+    \endverb
+    \field{year}{2017}
+  \endentry
+
+  \entry{11}{misc}{}
+    \name{author}{1}{}{%
+      {{hash=HJ}{%
+         family={Hui},
+         familyi={H\bibinitperiod},
+         given={Jonathan},
+         giveni={J\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{HJ1}
+    \strng{fullhash}{HJ1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{note}{Último acceso el 11 de abril de 2023}
+    \field{title}{Real-time Object Detection with YOLO, YOLOv2 and now YOLOv3}
+    \verb{url}
+    \verb https://jonathan-hui.medium.com/real-time-object-detection-with-yolo-
+    \verb yolov2-28b1b93e2088
+    \endverb
+    \field{year}{2018}
+  \endentry
+
+  \entry{7}{misc}{}
+    \name{author}{1}{}{%
+      {{hash=V}{%
+         family={VMware},
+         familyi={V\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{V1}
+    \strng{fullhash}{V1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{note}{Último acceso el 11 de abril de 2023}
+    \field{title}{VMware Workstation Player}
+    \verb{url}
+    \verb https://www.vmware.com/products/workstation-player.html
+    \endverb
+    \field{year}{2023}
+  \endentry
+
+  \entry{16}{misc}{}
+    \name{author}{1}{}{%
+      {{hash=TC}{%
+         family={Tan},
+         familyi={T\bibinitperiod},
+         given={Cherie},
+         giveni={C\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{TC1}
+    \strng{fullhash}{TC1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{note}{Último acceso el 30 de abril de 2023}
+    \field{title}{Install TensorFlow on Raspberry Pi}
+    \verb{url}
+    \verb https://littlebirdelectronics.com.au/guides/141/install-tensorflow-on
+    \verb -raspberry-pi
+    \endverb
+    \field{year}{2023}
+  \endentry
+
+  \entry{17}{misc}{}
+    \name{author}{1}{}{%
+      {{hash=JL}{%
+         family={Johnson},
+         familyi={J\bibinitperiod},
+         given={Leigh},
+         giveni={L\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{JL1}
+    \strng{fullhash}{JL1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{note}{Último acceso el 30 de abril de 2023}
+    \field{title}{TensorFlow 2 on Raspberry Pi}
+    \verb{url}
+    \verb https://towardsdatascience.com/3-ways-to-install-tensorflow-2-on-rasp
+    \verb berry-pi-fe1fa2da9104
+    \endverb
+    \field{year}{2020}
+  \endentry
+
+  \entry{19}{misc}{}
+    \name{author}{1}{}{%
+      {{hash=ZR}{%
+         family={Zwetsloot},
+         familyi={Z\bibinitperiod},
+         given={Rob},
+         giveni={R\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{ZR1}
+    \strng{fullhash}{ZR1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{note}{Último acceso el 30 de abril de 2023}
+    \field{title}{How to install TensorFlow on Raspberry Pi}
+    \verb{url}
+    \verb https://magpi.raspberrypi.com/articles/tensorflow-ai-raspberry-pi
+    \endverb
+    \field{year}{2019}
+  \endentry
+
+  \entry{18}{misc}{}
+    \name{author}{1}{}{%
+      {{hash=JL}{%
+         family={Johnson},
+         familyi={J\bibinitperiod},
+         given={Leigh},
+         giveni={L\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{JL1}
+    \strng{fullhash}{JL1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{note}{Último acceso el 30 de abril de 2023}
+    \field{title}{TensorFlow 2 on Raspberry Pi}
+    \verb{url}
+    \verb https://towardsdatascience.com/3-ways-to-install-tensorflow-2-on-rasp
+    \verb berry-pi-fe1fa2da9104
+    \endverb
+    \field{year}{2020}
+  \endentry
+
+  \entry{20}{misc}{}
+    \name{author}{1}{}{%
+      {{hash=UPML}{%
+         family={Up},
+         familyi={U\bibinitperiod},
+         given={Pi\bibnamedelima My\bibnamedelima Life},
+         giveni={P\bibinitperiod\bibinitdelim M\bibinitperiod\bibinitdelim
+  L\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{UPML1}
+    \strng{fullhash}{UPML1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{note}{Último acceso el 30 de abril de 2023}
+    \field{title}{Installing TensorFlow Lite on the Raspberry Pi}
+    \verb{url}
+    \verb https://pimylifeup.com/raspberry-pi-tensorflow-lite/
+    \endverb
+    \field{year}{2022}
+  \endentry
+\enddatalist
+\endinput
