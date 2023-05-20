@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2023.3.21)  11 MAY 2023 18:00
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2023.3.21)  20 MAY 2023 13:56
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -929,7 +929,7 @@ LaTeX Info: Redefining \nameref on input line 69.
 \@outlinefile=\write4
 \openout4 = `memoria.out'.
 
-<./Figures/logoFIUBA.pdf, id=116, 460.9062pt x 153.61644pt>
+<./Figures/logoFIUBA.pdf, id=120, 460.9062pt x 153.61644pt>
 File: ./Figures/logoFIUBA.pdf Graphic file (type pdf)
 <use ./Figures/logoFIUBA.pdf>
 Package pdftex.def Info: ./Figures/logoFIUBA.pdf  used on input line 69.
@@ -1108,7 +1108,7 @@ Overfull \hbox (0.58511pt too wide) in paragraph at lines 83--84
 O-LO. Re-pre-sen-ta un avan-
  []
 
-<Figures//yolodos.jpeg, id=256, 650.43pt x 237.2865pt>
+<Figures//yolodos.jpeg, id=260, 650.43pt x 237.2865pt>
 File: Figures//yolodos.jpeg Graphic file (type jpg)
 <use Figures//yolodos.jpeg>
 Package pdftex.def Info: Figures//yolodos.jpeg  used on input line 95.
@@ -1143,8 +1143,8 @@ LaTeX Info: Redefining \% on input line 134.
 LaTeX Info: Redefining \. on input line 190.
 LaTeX Info: Redefining \% on input line 190.
  [5])
-LaTeX Info: Redefining \. on input line 132.
-LaTeX Info: Redefining \% on input line 132.
+LaTeX Info: Redefining \. on input line 136.
+LaTeX Info: Redefining \% on input line 136.
  [6]
 \openout2 = `Chapters/Chapter2.aux'.
 
@@ -1173,8 +1173,8 @@ LaTeX Info: Redefining \% on input line 127.
 LaTeX Info: Redefining \. on input line 170.
 LaTeX Info: Redefining \% on input line 170.
  [11])
-LaTeX Info: Redefining \. on input line 133.
-LaTeX Info: Redefining \% on input line 133.
+LaTeX Info: Redefining \. on input line 137.
+LaTeX Info: Redefining \% on input line 137.
  [12]
 \openout2 = `Chapters/Chapter3.aux'.
 
@@ -1196,7 +1196,7 @@ File: lstmisc.sty 2020/03/24 1.8d (Carsten Heinz)
 LaTeX Info: Redefining \. on input line 95.
 LaTeX Info: Redefining \% on input line 95.
  [14]
-<Figures//c31v2.png, id=361, 974.64125pt x 864.22874pt>
+<Figures//c31v2.png, id=365, 974.64125pt x 864.22874pt>
 File: Figures//c31v2.png Graphic file (type png)
 <use Figures//c31v2.png>
 Package pdftex.def Info: Figures//c31v2.png  used on input line 105.
@@ -1209,12 +1209,12 @@ Overfull \hbox (65.43825pt too wide) in paragraph at lines 105--106
 LaTeX Info: Redefining \. on input line 114.
 LaTeX Info: Redefining \% on input line 114.
 [15 <./Figures//c31v2.png>]
-<Figures//c32.png, id=371, 383.93437pt x 79.04532pt>
+<Figures//c32.png, id=375, 383.93437pt x 79.04532pt>
 File: Figures//c32.png Graphic file (type png)
 <use Figures//c32.png>
 Package pdftex.def Info: Figures//c32.png  used on input line 119.
 (pdftex.def)             Requested size: 284.54636pt x 56.90654pt.
-<Figures//c33v2.png, id=372, 693.59125pt x 372.39125pt>
+<Figures//c33v2.png, id=376, 693.59125pt x 372.39125pt>
 File: Figures//c33v2.png Graphic file (type png)
 <use Figures//c33v2.png>
 Package pdftex.def Info: Figures//c33v2.png  used on input line 137.
@@ -1239,7 +1239,7 @@ LaTeX Info: Redefining \% on input line 161.
 LaTeX Info: Redefining \. on input line 194.
 LaTeX Info: Redefining \% on input line 194.
  [18]
-<Figures//sampleGrecia.png, id=389, 376.40625pt x 223.83624pt>
+<Figures//sampleGrecia.png, id=393, 376.40625pt x 223.83624pt>
 File: Figures//sampleGrecia.png Graphic file (type png)
 <use Figures//sampleGrecia.png>
 Package pdftex.def Info: Figures//sampleGrecia.png  used on input line 210.
@@ -1263,8 +1263,8 @@ Overfull \vbox (8.34636pt too high) has occurred while \output is active []
 
 
 [19 <./Figures//sampleGrecia.png>])
-LaTeX Info: Redefining \. on input line 134.
-LaTeX Info: Redefining \% on input line 134.
+LaTeX Info: Redefining \. on input line 138.
+LaTeX Info: Redefining \% on input line 138.
  [20]
 \openout2 = `Chapters/Chapter4.aux'.
 
@@ -1288,8 +1288,8 @@ LaTeX Info: Redefining \% on input line 79.
 LaTeX Info: Redefining \. on input line 112.
 LaTeX Info: Redefining \% on input line 112.
  [23])
-LaTeX Info: Redefining \. on input line 135.
-LaTeX Info: Redefining \% on input line 135.
+LaTeX Info: Redefining \. on input line 139.
+LaTeX Info: Redefining \% on input line 139.
 
 [24]
 \openout2 = `Chapters/Chapter5.aux'.
@@ -1303,8 +1303,8 @@ Cap\'{\i }tulo 5.
 
 
 ])
-LaTeX Info: Redefining \. on input line 136.
-LaTeX Info: Redefining \% on input line 136.
+LaTeX Info: Redefining \. on input line 140.
+LaTeX Info: Redefining \% on input line 140.
  [26]
 \openout2 = `Appendices/AppendixA.aux'.
 
@@ -1324,8 +1324,8 @@ Ap\'{e}ndice A.
 ]
 1: section
 [29]
-LaTeX Info: Redefining \. on input line 161.
-LaTeX Info: Redefining \% on input line 161.
+LaTeX Info: Redefining \. on input line 165.
+LaTeX Info: Redefining \% on input line 165.
  [30] (./memoria.aux
 LaTeX Info: Redefining \sptext on input line 29.
 LaTeX Info: Redefining \. on input line 29.
@@ -1340,7 +1340,7 @@ LaTeX Warning: There were undefined references.
 LaTeX Warning: There were multiply-defined labels.
 
 Package rerunfilecheck Info: File `memoria.out' has not changed.
-(rerunfilecheck)             Checksum: 22D0F607F19D4EA20EFD4FD0C4783A79;2005.
+(rerunfilecheck)             Checksum: E56E35A7FFFC7D961A16AF986425EFF6;2057.
 
 Package biblatex Warning: Please (re)run BibTeX on the file(s):
 (biblatex)                memoria
@@ -1351,10 +1351,10 @@ Package logreq Info: Writing requests to 'memoria.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 30636 strings out of 480071
- 654906 string characters out of 5891616
- 1295495 words of memory out of 5000000
- 48050 multiletter control sequences out of 15000+600000
+ 30637 strings out of 480071
+ 654918 string characters out of 5891616
+ 1296528 words of memory out of 5000000
+ 48051 multiletter control sequences out of 15000+600000
  516968 words of font info for 93 fonts, out of 8000000 for 9000
  108 hyphenation exceptions out of 8191
  96i,20n,93p,1932b,2001s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1370,10 +1370,10 @@ e1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw
 lb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/palatino/uplr8a.pfb></u
 sr/share/texlive/texmf-dist/fonts/type1/urw/palatino/uplr8a.pfb></usr/share/tex
 live/texmf-dist/fonts/type1/urw/palatino/uplri8a.pfb>
-Output written on memoria.pdf (44 pages, 1109313 bytes).
+Output written on memoria.pdf (44 pages, 1109649 bytes).
 PDF statistics:
- 573 PDF objects out of 1000 (max. 8388607)
- 493 compressed objects within 5 object streams
+ 577 PDF objects out of 1000 (max. 8388607)
+ 497 compressed objects within 5 object streams
  146 named destinations out of 1000 (max. 500000)
- 255 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 263 words of extra memory for PDF output out of 10000 (max. 10000000)
 
